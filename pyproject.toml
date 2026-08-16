@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "military-career-transition-analysis"
+version = "0.1.0"
+description = "Reproducible public-data pipeline for mapping military tasks to civilian jobs"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = []
+
+[project.scripts]
+work24-jobs = "career_transition.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
