@@ -85,6 +85,32 @@ NCS 능력단위 후보 생성
 - 원응답의 저장·공개 범위는 고용24 이용조건을 따릅니다. 재배포가 제한되면 수집 코드, 출처, 필드 정의, 집계된 파생통계만 공개합니다.
 - 호출량, 갱신 주기, 캐시 정책은 승인 조건과 서비스 제한을 준수합니다.
 
+### 수집 코드 실행
+
+고용24에서 직업정보 API 인증키가 발급된 뒤 아래 순서로 실행합니다. 이 저장소는 외부 패키지 없이 Python 3.11 이상에서 동작합니다.
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -e .
+$env:WORK24_AUTH_KEY = "발급받은_인증키"
+
+# 직업 목록 XML과 정규화 CSV 생성
+work24-jobs list
+
+# 특정 직업의 '하는 일' 상세 XML 수집
+work24-jobs detail 직업코드 --section 2
+```
+
+`WORK24_AUTH_KEY`는 커밋하지 않습니다. 목록 원문은 `data/raw/work24/`, 정규화 목록은 `data/processed/work24_jobs.csv`에 생성되며 두 경로의 생성물은 기본적으로 Git에서 제외됩니다. 필드 정의와 상세구분은 [`docs/data-dictionary.md`](docs/data-dictionary.md)를 참고하십시오.
+
+인증키 없이 구조만 검증하려면 다음 테스트를 실행합니다.
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m unittest discover -s tests -v
+```
+
 ## 저장소 구조
 
 ```text
