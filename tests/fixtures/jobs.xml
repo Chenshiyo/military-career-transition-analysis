@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jobsList>
+  <total>2</total>
+  <jobList>
+    <jobClcd>01</jobClcd>
+    <jobClcdNM>관리직</jobClcdNM>
+    <jobCd>100001</jobCd>
+    <jobNm>물류관리자</jobNm>
+  </jobList>
+  <jobList>
+    <jobClcd>13</jobClcd>
+    <jobClcdNM>정보통신직</jobClcdNM>
+    <jobCd>100002</jobCd>
+    <jobNm>네트워크관리자</jobNm>
+  </jobList>
+</jobsList>
